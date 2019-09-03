@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +16,7 @@ public class Consume {
 	public static void main(String[] ar) throws ClassNotFoundException, SQLException {
 		
 		RestTemplate rt = new RestTemplate();
-		Professor professorJsonData = rt.getForObject("http://localhost:9999/getProfById/2",Professor.class);
+		Professor professorJsonData = rt.getForObject("http://localhost:9999/getProfById/1",Professor.class);
 		log.info("Finally We are Consuming the Professor Data : "+professorJsonData.getpId()+" "+professorJsonData.getpName());
 		Long professorId = professorJsonData.getpId();
 		String professorAddress = professorJsonData.getpAddress();
@@ -27,7 +26,7 @@ public class Consume {
 		Class.forName("com.mysql.cj.jdbc.Driver");  
 		Connection con=DriverManager.getConnection(  
 		"jdbc:mysql://localhost:3306/kamesh","root","root");  
-		 String query = " insert into Dump (pId, pName, pAddress, PSubjectName)"
+		 String query = " insert into Temp (pId, pName, pAddress, PSubjectName)"
 			        + " values (?, ?, ?, ?)";
 
 			      // create the mysql insert preparedstatement
